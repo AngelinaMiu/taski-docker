@@ -85,7 +85,6 @@ jobs:
             # В параметре tags задаётся название и тег для образа.
             # Для каждого пересобранного образа 
             # устанавливаем тег latest, чтобы потом
-            # на сервере и в docker-compose.yml не указывать версию
             tags: miura193/taski_backend:latest
 
   frontend_tests:
