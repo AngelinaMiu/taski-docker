@@ -1,18 +1,11 @@
 import os
 from pathlib import Path
 
-import environ
-
-
-env = environ.Env()
-environ.Env.read_env()
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-SECRET_KEY = env('SECRET_KEY', default='your_default_secret_key')
+SECRET_KEY = os.environ.get('SECRET_KEY', default='your_default_secret_key')
 DEBUG = True
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', 'taskimiura.tech', '127.0.0.1', '51.250.105.252', 'backend'])
+ALLOWED_HOSTS = ['localhost', 'taskimiura.tech', '127.0.0.1', '51.250.105.252', 'backend']
 
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
