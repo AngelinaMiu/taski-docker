@@ -10,6 +10,13 @@ services:
     env_file: .env
     volumes:
       - pg_data:/var/lib/postgresql/data
+
+  frontend:
+    env_file: .env
+    build: ./frontend/
+    volumes:
+      - static:/frontend_static
+
   backend:
     build: ./backend/
     env_file: .env
@@ -18,17 +25,18 @@ services:
     depends_on:
       - db
 
-  frontend:
-    env_file: .env
-    build: ./frontend/
-    command: cp -r /app/build/. /frontend_static/
-    volumes:
-      - static:/frontend_static
-
   gateway:
-    build: ./ngateway/
+    build: ./gateway/
     env_file: .env
     volumes:
       - static:/staticfiles
     ports:
+<<<<<<< HEAD
       - 9001:80
+=======
+      - 8000:80
+    depends_on:
+      - backend
+      - frontend
+      - db
+>>>>>>> a432013f1a3998572d31f4d5a32d969e64db37c1
